@@ -1,0 +1,21 @@
+{
+  "redirects": [
+    { "source": "/category/remont-avtoelektriki", "destination": "/uslugi/avtoelektrik/", "permanent": true },
+    { "source": "/category/diagnostika-i-remont-dvigatelya", "destination": "/uslugi/remont-dvigatelya/", "permanent": true },
+    { "source": "/category/remont-podveski", "destination": "/uslugi/remont-podveski/", "permanent": true },
+    { "source": "/category/to-zamena-zidkostei", "destination": "/uslugi/to/", "permanent": true },
+    { "source": "/category/remont-tormoznoi-sistemy", "destination": "/uslugi/remont-tormozov/", "permanent": true },
+    { "source": "/category/prochee", "destination": "/uslugi/prochee/", "permanent": true },
+    { "source": "/categories", "destination": "/uslugi/", "permanent": true },
+    { "source": "/page/about", "destination": "/o-kompanii/", "permanent": true },
+    { "source": "/contact", "destination": "/kontakty/", "permanent": true },
+    { "source": "/specials", "destination": "/akcii/", "permanent": true },
+    { "source": "/vacancies", "destination": "/vakansii/", "permanent": true },
+    { "source": "/vacancy/:id", "destination": "/vakansii/", "permanent": true },
+    { "source": "/testimonials", "destination": "/otzyvy/", "permanent": true },
+    { "source": "/faq", "destination": "/", "permanent": true },
+    { "source": "/login", "destination": "/", "permanent": true },
+    { "source": "/register", "destination": "/", "permanent": true }
+  ],
+  "headers": [{ "source": "/img/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }]
+}
