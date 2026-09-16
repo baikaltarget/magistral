@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound() { return (<section className="container mt-16 text-center"><h1>Страница не найдена</h1><p className="mt-3 text-muted">Возможно, адрес изменился. Начните с главной или списка услуг.</p><div className="mt-6 flex justify-center gap-3"><Link href="/" className="btn-primary">На главную</Link><Link href="/uslugi/" className="btn-ghost">Услуги</Link></div></section>); }

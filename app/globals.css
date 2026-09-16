@@ -1,0 +1,45 @@
+@import "@fontsource-variable/manrope/index.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --page: #F2F3F5; --sheet: #FFFFFF; --ink: #1B2733; --muted: #5E6B78; --line: #E4E7EB;
+  --accent: #EC691F; --accent-deep: #C9551A; --accent-soft: #FDF0E7;
+  --radius: 1.75rem;
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+body { background: var(--page); color: var(--ink); font-feature-settings: "ss01", "cv11"; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; text-wrap: balance; }
+h1 { font-size: clamp(2rem, 4.5vw, 3.25rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: 1.25rem; letter-spacing: -0.01em; }
+p, li { line-height: 1.6; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+@layer components {
+.container { @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-8; }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-pill font-bold transition-colors; }
+.btn-primary { @apply btn bg-accent text-white px-6 py-3.5 hover:bg-accent-deep; }
+.btn-ghost { @apply btn border border-line bg-white text-ink px-6 py-3.5 hover:border-ink; }
+.btn-sm { @apply px-4 py-2.5 text-sm; }
+.card { @apply rounded-2xl bg-white border border-line; }
+.prose-site p { @apply mb-4 text-[17px] text-ink/90; }
+.prose-site h2 { @apply mt-8 mb-3 text-2xl; }
+.prose-site h3 { @apply mt-6 mb-2; }
+.prose-site ul { @apply mb-4 list-disc pl-6; }
+.prose-site li { @apply mb-1.5 text-[17px]; }
+.prose-site strong { @apply font-bold; }
+
+}
+/* Заглушка данных заказчика — выключается в site.json → placeholders.showFrames */
+.ph { outline: 2px dashed #E11D48; outline-offset: 2px; border-radius: 6px; position: relative; }
+.ph::after { content: "заполнить"; position: absolute; top: -10px; right: 4px; background: #E11D48; color: #fff; font-size: 10px; line-height: 1; padding: 3px 6px; border-radius: 4px; font-weight: 700; }
+
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .chev { transform: rotate(180deg); }
+.chev { transition: transform .2s; }
+body { padding-bottom: 0; }
+@media (max-width: 767px) { body { padding-bottom: 76px; } }
