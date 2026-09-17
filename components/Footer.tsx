@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SITE, hubs, BRANDS } from "@/lib/site";
-import { Wa, Tg, Vk } from "./Icons";
+import { Vk } from "./Icons";
+import { MaxLink, TgLink } from "./Messengers";
 export default function Footer() {
   return (
     <footer className="container mt-16 mb-6">
@@ -14,8 +15,7 @@ export default function Footer() {
             <p className="mt-2 text-sm">{SITE.hours}</p>
             <a href={`tel:${SITE.phoneRaw}`} className="mt-3 block text-2xl font-extrabold text-white">{SITE.phone}</a>
             <div className="mt-4 flex gap-3">
-              <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener" aria-label="WhatsApp" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20"><Wa /></a>
-              <a href={`https://t.me/${SITE.telegram}`} target="_blank" rel="noopener" aria-label="Telegram" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20"><Tg /></a>
+              <MaxLink className="w-10 h-10" /><TgLink className="w-10 h-10" />
               <a href={SITE.vk} target="_blank" rel="noopener" aria-label="ВКонтакте" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20"><Vk /></a>
             </div>
           </div>

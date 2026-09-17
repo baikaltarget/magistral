@@ -8,7 +8,7 @@ export default function Page() {
   return (<>
     <section className="container mt-6"><Breadcrumbs items={crumbs} /><h1>Вакансии</h1><p className="mt-3 text-muted max-w-2xl">Ищем людей, которым важно делать хорошо. Тёплый цех, шесть постов с подъёмниками, честная сдельная оплата.</p></section>
     <Section className="!mt-8"><div className="grid gap-4 md:grid-cols-3">{SITE.vacancies.map((v) => <div key={v.slug} className="card p-6"><h2 className="text-xl">{v.title}</h2><p className="mt-1 font-bold text-accent-deep"><Placeholder flag={!!v.placeholder}>{v.salary}</Placeholder></p><p className="mt-3 text-muted">{v.text}</p></div>)}</div>
-    <p className="mt-6">Откликнуться: <a href={`tel:${SITE.phoneRaw}`} className="font-bold">{SITE.phone}</a> или <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener" className="font-bold text-accent">WhatsApp</a>.</p></Section>
+    <p className="mt-6">Откликнуться: <a href={`tel:${SITE.phoneRaw}`} className="font-bold">{SITE.phone}</a> или <a href={SITE.max} target="_blank" rel="noopener" className="font-bold text-accent">Max</a>.</p></Section>
     <JsonLd data={breadcrumbs(crumbs)} />
   </>);
 }

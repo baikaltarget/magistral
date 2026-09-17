@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { BRANDS, brand, hubs, SERVICES, SITE } from "@/lib/site";
+import { BRANDS, brand, hubs, SERVICES, SITE, brandLogo } from "@/lib/site";
 import { meta } from "@/lib/meta";
-import { Breadcrumbs, Section, Cta, Checks, FaqList } from "@/components/Ui";
+import { Breadcrumbs, Section, Checks, FaqList } from "@/components/Ui";
 import LeadForm from "@/components/LeadForm";
 import JsonLd, { breadcrumbs, faqPage, serviceLd } from "@/components/JsonLd";
 export const dynamicParams = false;
@@ -27,7 +27,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <Breadcrumbs items={crumbs} />
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 items-start">
           <div>
-            <h1>Ремонт {b.name} в Иркутске</h1>
+            {brandLogo(b.slug) && <Image src={brandLogo(b.slug)!} alt={`Логотип ${b.name}`} width={120} height={60} className="h-12 w-auto mb-4 grayscale opacity-80" />}<h1>Ремонт {b.name} в Иркутске</h1>
             <p className="mt-5 text-[17px] text-ink/90">{b.intro}</p>
             <p className="mt-4 text-muted"><span className="font-bold text-ink">Модели:</span> {b.models.join(", ")}.</p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3"><Link href="/zapis/" className="btn-primary">Записаться</Link><a href={`tel:${SITE.phoneRaw}`} className="btn-ghost">{SITE.phone}</a></div>
@@ -39,7 +39,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
       <Section><h2 className="mb-4">Услуги для {b.name}</h2><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{[...hubs().filter((h) => h.slug !== "prochee"), SERVICES.find((s) => s.slug === "razval-shozhdenie")!, SERVICES.find((s) => s.slug === "zamena-masla")!, SERVICES.find((s) => s.slug === "zamena-masla-akpp-variator")!].map((s) => (<Link key={s.slug} href={`/uslugi/${s.slug}/`} className="card p-4 hover:border-accent transition"><p className="font-bold">{s.name}</p><p className="text-xs text-muted mt-1">{s.short}</p></Link>))}</div></Section>
       <Section><div className="grid lg:grid-cols-2 gap-8 items-start"><FaqList faq={faq} /><div><h2 className="mb-4">Записать {b.name}</h2><LeadForm compact source={`марка ${b.name}`} /></div></div></Section>
       <Section><p className="text-sm text-muted">Другие марки: {others.map((o, i) => <span key={o.slug}>{i > 0 && ", "}<Link href={`/marki/${o.slug}/`} className="hover:text-accent">{o.name}</Link></span>)} — <Link href="/marki/" className="text-accent font-semibold">все марки</Link>.</p></Section>
-      <Section><Cta /></Section>
       <JsonLd data={[breadcrumbs(crumbs), faqPage(faq), serviceLd(`Ремонт ${b.name}`, `Ремонт и обслуживание ${b.name} в Иркутске`, `/marki/${b.slug}/`)]} />
     </>
   );

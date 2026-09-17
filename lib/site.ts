@@ -9,7 +9,7 @@ export type Work = { name: string; price: string; placeholder?: boolean };
 export type Faq = { q: string; a: string; placeholder?: boolean };
 export type Service = {
   slug: string; hub?: boolean; parent?: string; old?: string; name: string; h1: string; title: string;
-  description: string; image: string; short: string; intro: string[]; works: Work[]; children?: string[]; faq: Faq[];
+  description: string; image: string; short: string; intro: string[]; works: Work[]; children?: string[]; faq: Faq[]; when?: string[]; time?: string; note?: string;
 };
 export type Brand = { slug: string; name: string; ru: string; group: "jp" | "kr" | "other"; priority: number; models: string[]; intro: string; typical: string[] };
 export type Post = { slug: string; title: string; description: string; date: string; related: string; relatedName: string; html: string; };
@@ -59,3 +59,5 @@ export function posts(): Post[] {
 export const post = (slug: string) => posts().find((p) => p.slug === slug);
 
 export const priceIsPlaceholder = (w: Work) => !!w.placeholder;
+
+export const brandLogo = (slug: string) => { const p = path.join(process.cwd(), "public", "img", "brands", `${slug}.png`); return fs.existsSync(p) ? `/img/brands/${slug}.png` : null; };

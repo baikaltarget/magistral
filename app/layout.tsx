@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CallBar from "@/components/CallBar";
+import CookieBar from "@/components/CookieBar";
 import JsonLd, { org } from "@/components/JsonLd";
 import { SITE } from "@/lib/site";
 
@@ -18,14 +18,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru">
       <body>
-        <div className="mx-auto max-w-[1440px] px-0 sm:px-3 sm:pt-3">
+        <div className="mx-auto max-w-[1600px] px-0 sm:px-2 sm:pt-2">
           <div className="bg-sheet sm:rounded-xl2 min-h-screen pb-6">
             <Header />
             <main>{children}</main>
             <Footer />
           </div>
         </div>
-        <CallBar />
+        <CookieBar />
         <JsonLd data={org()} />
         {/* Яндекс.Метрика — вставить код счётчика ниже, перед </body> */}
       </body>

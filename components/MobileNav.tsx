@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import site from "@/content/site.json";
+import { MaxLink, TgLink } from "./Messengers";
 type Item = { href: string; label: string; children?: { href: string; label: string }[] };
 export default function MobileNav({ nav }: { nav: Item[] }) {
   const [open, setOpen] = useState(false);
@@ -25,7 +26,7 @@ export default function MobileNav({ nav }: { nav: Item[] }) {
           </ul>
           <div className="mt-6 border-t border-line pt-6 text-sm text-muted">
             <div>{site.address}</div><div>{site.hours}</div>
-            <a href={`tel:${site.phoneRaw}`} className="block mt-2 text-2xl font-extrabold text-ink">{site.phone}</a>
+            <a href={`tel:${site.phoneRaw}`} className="block mt-2 text-2xl font-extrabold text-ink">{site.phone}</a><div className="mt-3 flex gap-3"><MaxLink /><TgLink /></div>
           </div>
         </div>
       )}

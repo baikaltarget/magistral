@@ -9,12 +9,15 @@ export default function LeadForm({ compact = false, source = "site" }: { compact
   const [d, setD] = useState({ brand: "", model: "", reason: "", name: "", phone: "", comment: "", source });
   const [state, setState] = useState<"idle" | "sending" | "ok" | "fallback" | "err">("idle");
   const [msg, setMsg] = useState("");
+  const [agree, setAgree] = useState(true);
+  const fmt = (v: string) => { let d = v.replace(/\D/g, ""); if (d.startsWith("8")) d = "7" + d.slice(1); if (!d.startsWith("7")) d = "7" + d; d = d.slice(0, 11); const p = d.slice(1); let out = "+7"; if (p.length) out += " (" + p.slice(0, 3); if (p.length >= 3) out += ") " + p.slice(3, 6); if (p.length >= 6) out += "-" + p.slice(6, 8); if (p.length >= 8) out += "-" + p.slice(8, 10); return out; };
   const set = (k: string, v: string) => setD({ ...d, [k]: v });
   const text = `Заявка с сайта (${source})\nМарка: ${d.brand} ${d.model}\nПричина: ${d.reason}\nИмя: ${d.name}\nТелефон: ${d.phone}\nКомментарий: ${d.comment}`;
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!d.phone.trim()) { setMsg("Укажите телефон — без него не сможем перезвонить."); return; }
+    if (d.phone.replace(/\D/g, "").length < 11) { setMsg("Укажите телефон полностью — без него не сможем перезвонить."); return; }
+    if (!agree) { setMsg("Нужно согласие на обработку данных."); return; }
     setState("sending"); setMsg("");
     try {
       const r = await fetch("/api/lead/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(d) });
@@ -27,10 +30,10 @@ export default function LeadForm({ compact = false, source = "site" }: { compact
   if (state === "fallback") return (
     <div className="card p-6">
       <p className="text-lg font-extrabold">Онлайн-отправка пока не настроена</p>
-      <p className="mt-2 text-muted">Заявка сохранена в логе сайта, но надёжнее — позвонить или отправить в WhatsApp одной кнопкой.</p>
+      <p className="mt-2 text-muted">Заявка сохранена в логе сайта, но надёжнее — позвонить или написать в Max.</p>
       <div className="mt-4 flex flex-col sm:flex-row gap-3">
         <a href={`tel:${site.phoneRaw}`} className="btn-primary">{site.phone}</a>
-        <a href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`} target="_blank" rel="noopener" className="btn-ghost">Отправить в WhatsApp</a>
+        <a href={site.max} target="_blank" rel="noopener" className="btn-ghost">Написать в Max</a>
       </div>
     </div>
   );
@@ -58,14 +61,14 @@ export default function LeadForm({ compact = false, source = "site" }: { compact
         <p className="font-extrabold text-lg mb-3">{compact ? "Оставьте номер — перезвоним" : "Куда перезвонить?"}</p>
         <div className="grid gap-3 sm:grid-cols-2">
           <input className={inp} placeholder="Имя" value={d.name} onChange={(e) => set("name", e.target.value)} autoComplete="name" />
-          <input className={inp} placeholder="Телефон" type="tel" value={d.phone} onChange={(e) => set("phone", e.target.value)} autoComplete="tel" required />
+          <input className={inp} placeholder="+7 (___) ___-__-__" type="tel" inputMode="tel" value={d.phone} onChange={(e) => set("phone", e.target.value ? fmt(e.target.value) : "")} autoComplete="tel" required />
         </div>
         {compact && <input className={`${inp} mt-3`} placeholder="Марка, модель и что нужно (необязательно)" value={d.comment} onChange={(e) => set("comment", e.target.value)} />}
         {msg && <p className="mt-2 text-sm text-red-600">{msg}</p>}
         <div className="mt-4 flex flex-col sm:flex-row gap-3 sm:items-center">
           {!compact && <button type="button" onClick={() => setStep(2)} className="btn-ghost">Назад</button>}
           <button type="submit" disabled={state === "sending"} className="btn-primary">{state === "sending" ? "Отправляем…" : "Перезвоните мне"}</button>
-          <span className="text-xs text-muted">Нажимая кнопку, вы соглашаетесь с <a href="/politika/" className="underline">политикой конфиденциальности</a>.</span>
+          <label className="flex items-start gap-2 text-xs text-muted cursor-pointer"><input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 w-4 h-4 accent-[#EC691F]" /><span>Согласен на обработку персональных данных и с <a href="/politika/" className="underline">политикой конфиденциальности</a></span></label>
         </div>
       </div>)}
     </form>

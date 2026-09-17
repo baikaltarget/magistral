@@ -19,7 +19,7 @@ p, li { line-height: 1.6; }
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
 @layer components {
-.container { @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-8; }
+.container { @apply mx-auto w-full max-w-site px-3 sm:px-5 lg:px-6; }
 .btn { @apply inline-flex items-center justify-center gap-2 rounded-pill font-bold transition-colors; }
 .btn-primary { @apply btn bg-accent text-white px-6 py-3.5 hover:bg-accent-deep; }
 .btn-ghost { @apply btn border border-line bg-white text-ink px-6 py-3.5 hover:border-ink; }
@@ -41,5 +41,3 @@ details > summary { list-style: none; cursor: pointer; }
 details > summary::-webkit-details-marker { display: none; }
 details[open] .chev { transform: rotate(180deg); }
 .chev { transition: transform .2s; }
-body { padding-bottom: 0; }
-@media (max-width: 767px) { body { padding-bottom: 76px; } }

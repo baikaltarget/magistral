@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SITE, hubs, SERVICES, BRANDS, posts } from "@/lib/site";
+import BrandTile from "@/components/BrandTile";
 import { meta } from "@/lib/meta";
 import { Section, FaqList, Cta, Checks, Placeholder } from "@/components/Ui";
 import LeadForm from "@/components/LeadForm";
@@ -37,8 +38,7 @@ export default function Home() {
           </div>
           <div className="relative min-h-[280px] lg:min-h-0">
             <Image src="/img/fasad-2.webp" alt="Автосервис Магистраль — оранжевые ворота постов на ул. Баррикад, 88д" fill priority sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover object-[35%_60%]" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#F6F4F1] via-[#F6F4F1]/20 to-transparent hidden lg:block w-1/3" />
-          </div>
+                      </div>
         </div>
       </section>
 
@@ -89,7 +89,7 @@ export default function Home() {
       <Section>
         <div className="flex items-end justify-between gap-4 mb-6"><h2>Марки, которые знаем лучше всего</h2><Link href="/marki/" className="text-accent font-bold shrink-0 hidden sm:inline">Все марки</Link></div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-          {BRANDS.filter((b) => b.priority === 1).map((b) => (<Link key={b.slug} href={`/marki/${b.slug}/`} className="card px-4 py-4 hover:border-accent transition"><p className="font-extrabold text-lg">{b.name}</p><p className="text-xs text-muted mt-1 line-clamp-1">{b.models.slice(0, 3).join(", ")}</p></Link>))}
+          {BRANDS.filter((b) => b.priority === 1).map((b) => (<BrandTile key={b.slug} b={b} />))}
         </div>
         <p className="mt-4 text-sm text-muted">А также Lada, УАЗ, Ford, Volkswagen, Skoda — <Link href="/marki/" className="text-accent font-semibold">обслуживаем все распространённые марки</Link>.</p>
       </Section>
@@ -119,7 +119,7 @@ export default function Home() {
       </Section>
 
       <Section><FaqList faq={SITE.faq} /></Section>
-      <Section><Cta /></Section>
+      <Section><div className="max-w-4xl"><h2>Автосервис «Магистраль» в Иркутске</h2><div className="mt-4 space-y-4 text-[17px] text-ink/90">{SITE.seoText.map((t, i) => <p key={i}>{t}</p>)}</div></div></Section>
       <JsonLd data={faqPage(SITE.faq)} />
     </>
   );

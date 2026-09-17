@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { BRANDS } from "@/lib/site";
+import BrandTile from "@/components/BrandTile";
 import { meta } from "@/lib/meta";
 import { Breadcrumbs, Section, Cta } from "@/components/Ui";
 import JsonLd, { breadcrumbs } from "@/components/JsonLd";
 export const metadata = meta("Ремонт японских и корейских автомобилей в Иркутске — все марки | Магистраль", "Ремонт и обслуживание Toyota, Honda, Nissan, Mazda, Subaru, Mitsubishi, Lexus, Suzuki, Hyundai, Kia, а также Lada, УАЗ, Ford, VW, Skoda в Иркутске. Автосервис «Магистраль».", "/marki/");
 const G = ({ title, text, list }: { title: string; text: string; list: typeof BRANDS }) => (
   <div><h2 className="text-2xl">{title}</h2><p className="mt-2 text-muted max-w-2xl">{text}</p>
-    <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">{list.map((b) => (<Link key={b.slug} href={`/marki/${b.slug}/`} className="card px-4 py-4 hover:border-accent transition"><p className="font-extrabold text-lg">{b.name}</p><p className="text-xs text-muted mt-1 line-clamp-2">{b.models.slice(0, 4).join(", ")}</p></Link>))}</div></div>
+    <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">{list.map((b) => (<BrandTile key={b.slug} b={b} />))}</div></div>
 );
 export default function Page() {
   return (

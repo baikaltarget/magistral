@@ -21,13 +21,17 @@ Next.js 15 (App Router) + Tailwind, статическая генерация. �
 
 Пока ключей нет, форма честно пишет «не настроено», показывает телефон и кнопку «Отправить в WhatsApp», а заявка попадает в лог Vercel (Project → Logs, искать `[LEAD]`).
 
+## 2а. Логотипы марок
+
+Положите png-логотипы в `public/img/brands/` с именами `toyota.png`, `honda.png`, `nissan.png`, `mazda.png`, `mitsubishi.png`, `subaru.png`, `suzuki.png`, `lexus.png`, `hyundai.png`, `kia.png`, `lada.png`, `uaz.png`, `ford.png`, `volkswagen.png`, `skoda.png` (на старом сайте они лежат в `/distadmin/image/catalog/brands/names/`). Сайт подхватит их автоматически и покажет чёрно-белыми; пока файла нет — показывает название.
+
 ## 3. Где что править
 
 Всё, что видит клиент, лежит в папке `content/`. Код трогать не нужно.
 
 | Что | Где |
 |---|---|
-| Телефон, адрес, режим, соцсети, тексты главной, FAQ, отзывы, акции, вакансии | `content/site.json` |
+| Телефон, адрес, режим, ссылки Max/Telegram/VK, тексты главной, FAQ, отзывы, акции, вакансии | `content/site.json` |
 | Услуги: тексты, **цены**, FAQ | `content/services.json` |
 | Марки: модели, тексты | `content/brands.json` |
 | Запчасти, юрлица, коммерческий транспорт, область, о компании | `content/pages.json` |
