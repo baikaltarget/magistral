@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru">
       <body>
-        <div className="mx-auto max-w-[1600px] px-0 sm:px-2 sm:pt-2">
+        <div className="mx-auto max-w-[1520px] px-0 sm:px-3 sm:pt-3">
           <div className="bg-sheet sm:rounded-xl2 min-h-screen pb-6">
             <Header />
             <main>{children}</main>

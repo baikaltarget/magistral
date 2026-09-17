@@ -32,7 +32,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             <p className="mt-4 text-muted"><span className="font-bold text-ink">Модели:</span> {b.models.join(", ")}.</p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3"><Link href="/zapis/" className="btn-primary">Записаться</Link><a href={`tel:${SITE.phoneRaw}`} className="btn-ghost">{SITE.phone}</a></div>
           </div>
-          <div className="relative aspect-[4/3] lg:aspect-[4/5] rounded-xl2 overflow-hidden"><Image src={`/img/${b.group === "kr" ? "lift-2" : b.priority === 1 ? "ceh-4" : "ceh-3"}.webp`} alt={`Ремонт ${b.name} в автосервисе Магистраль`} fill priority sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" /></div>
+          <div className="relative aspect-[4/3] rounded-xl2 overflow-hidden"><Image src={`/img/${b.group === "kr" ? "lift-2" : b.priority === 1 ? "ceh-4" : "ceh-3"}.webp`} alt={`Ремонт ${b.name} в автосервисе Магистраль`} fill priority sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" /></div>
         </div>
       </section>
       <Section className="!mt-10"><h2 className="mb-4">Что делаем на {b.name} чаще всего</h2><Checks items={b.typical} /></Section>
