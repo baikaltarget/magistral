@@ -119,7 +119,12 @@ export default function Home() {
       </Section>
 
       <Section><FaqList faq={SITE.faq} /></Section>
-      <Section><div className="max-w-4xl"><h2>Автосервис «Магистраль» в Иркутске</h2><div className="mt-4 space-y-4 text-[17px] text-ink/90">{SITE.seoText.map((t, i) => <p key={i}>{t}</p>)}</div></div></Section>
+      <Section><div className="grid lg:grid-cols-[1.4fr_1fr] gap-8 items-start"><div><h2>Автосервис «Магистраль» в Иркутске</h2><div className="mt-4 space-y-4 text-[17px] text-ink/90">{SITE.seoText.map((t, i) => <p key={i}>{t}</p>)}</div></div>
+          <div className="grid grid-cols-2 gap-3 lg:sticky lg:top-6">
+            <div className="relative col-span-2 aspect-[16/10] rounded-2xl overflow-hidden"><Image src="/img/fasad-1.webp" alt="Въезд в автосервис Магистраль, ул. Баррикад, 88д" fill sizes="35vw" className="object-cover" /></div>
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden"><Image src="/img/lift-3.webp" alt="Автомобиль на подъёмнике в цехе" fill sizes="17vw" className="object-cover" /></div>
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden"><Image src="/img/reception.webp" alt="Стойка приёмки" fill sizes="17vw" className="object-cover" /></div>
+          </div></div></Section>
       <JsonLd data={faqPage(SITE.faq)} />
     </>
   );
