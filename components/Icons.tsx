@@ -18,3 +18,4 @@ export const Tg = (p: any) => (<svg viewBox="0 0 24 24" width="22" height="22" f
 export const Vk = (p: any) => (<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" {...p}><path d="M13 17.5c-6 0-9.5-4.2-9.6-11h3c.1 5 2.3 7.1 4 7.5V6.5h2.9v4.3c1.7-.2 3.5-2.2 4.1-4.3h2.8c-.5 2.7-2.5 4.7-3.9 5.5 1.4.7 3.7 2.4 4.5 5.5h-3.1c-.7-2.1-2.4-3.7-4.5-3.9v3.9Z" /></svg>);
 export const Tag = (p: any) => (<svg {...base} {...p}><path d="M3 12V4h8l9 9-8 8-9-9Z" /><circle cx="7.5" cy="8.5" r="1.5" /></svg>);
 export const Cookie = (p: any) => (<svg {...base} {...p}><path d="M12 3a9 9 0 1 0 9 9 3 3 0 0 1-3-3 3 3 0 0 1-3-3 3 3 0 0 1-3-3Z" /><circle cx="8" cy="10" r="1" /><circle cx="10" cy="15" r="1" /><circle cx="15" cy="14" r="1" /></svg>);
+export const Briefcase = (p: any) => (<svg {...base} {...p}><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 12h18" /></svg>);

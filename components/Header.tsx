@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SITE, hubs } from "@/lib/site";
-import { Phone, Chevron, Wrench, Car, Box, Doc, Tag, Users, Pin } from "./Icons";
+import { Phone, Chevron, Wrench, Car, Box, Doc, Tag, Users, Pin, Briefcase } from "./Icons";
 import { MaxLink, TgLink } from "./Messengers";
 import MobileNav from "./MobileNav";
 
@@ -12,9 +12,10 @@ export const NAV = [
   { href: "/yurlicam/", label: "Юрлицам", icon: "doc" },
   { href: "/akcii/", label: "Акции", icon: "tag" },
   { href: "/o-kompanii/", label: "О нас", icon: "users" },
+  { href: "/vakansii/", label: "Вакансии", icon: "briefcase" },
   { href: "/kontakty/", label: "Контакты", icon: "pin" },
 ];
-const ICONS: Record<string, any> = { wrench: Wrench, car: Car, box: Box, doc: Doc, tag: Tag, users: Users, pin: Pin };
+const ICONS: Record<string, any> = { wrench: Wrench, car: Car, box: Box, doc: Doc, tag: Tag, users: Users, pin: Pin, briefcase: Briefcase };
 
 export default function Header() {
   return (
@@ -42,7 +43,7 @@ export default function Header() {
         <ul className="flex items-center justify-between">
           {NAV.map((n) => { const I = ICONS[n.icon]; return (
             <li key={n.href} className="relative group">
-              <Link href={n.href} className="flex items-center gap-2 px-3 lg:px-4 py-3.5 text-[15px] font-bold text-ink hover:text-accent">
+              <Link href={n.href} className="flex items-center gap-2 px-2.5 lg:px-4 py-3.5 text-[15px] font-bold text-ink hover:text-accent">
                 <I width={18} height={18} className="text-accent" />{n.label}{n.children && <Chevron width={16} height={16} className="text-muted" />}
               </Link>
               {n.children && (

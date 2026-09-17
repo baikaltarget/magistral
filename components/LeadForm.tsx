@@ -67,7 +67,7 @@ export default function LeadForm({ compact = false, source = "site" }: { compact
         {msg && <p className="mt-2 text-sm text-red-600">{msg}</p>}
         <div className="mt-4 flex flex-col sm:flex-row gap-3 sm:items-center">
           {!compact && <button type="button" onClick={() => setStep(2)} className="btn-ghost">Назад</button>}
-          <button type="submit" disabled={state === "sending"} className="btn-primary">{state === "sending" ? "Отправляем…" : "Перезвоните мне"}</button>
+          <button type="submit" disabled={state === "sending"} className="btn-primary whitespace-nowrap">{state === "sending" ? "Отправляем…" : "Перезвоните мне"}</button>
           <label className="flex items-start gap-2 text-xs text-muted cursor-pointer"><input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} className="mt-0.5 w-4 h-4 accent-[#EC691F]" /><span>Согласен на обработку персональных данных и с <a href="/politika/" className="underline">политикой конфиденциальности</a></span></label>
         </div>
       </div>)}
