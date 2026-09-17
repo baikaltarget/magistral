@@ -23,7 +23,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="Автосервис Магистраль — на главную">
           <Image src="/img/logo.png" alt="Магистраль автосервис" width={561} height={120} priority className="h-10 w-auto sm:h-14" />
         </Link>
-        <p className="hidden 2xl:block text-sm text-muted max-w-[220px] leading-snug mr-2">{SITE.tagline}</p>
+        <p className="hidden lg:block text-sm text-muted max-w-[190px] leading-snug mr-2">{SITE.tagline}</p>
         <div className="hidden md:flex items-center gap-4 lg:gap-6 ml-auto">
           <Link href="/zapis/" className="btn-primary btn-sm lg:px-6 lg:py-3 lg:text-base whitespace-nowrap">Записаться на ремонт</Link>
           <div className="hidden lg:flex items-center gap-3 text-sm shrink-0"><span className="text-muted">Напишите нам</span><MaxLink /><TgLink /></div>
