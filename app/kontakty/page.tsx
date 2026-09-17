@@ -18,7 +18,7 @@ export default function Page() {
           <div><p className="text-sm text-muted">Телефон</p><a href={`tel:${SITE.phoneRaw}`} className="font-extrabold text-2xl">{SITE.phone}</a></div>
           <div><p className="text-sm text-muted">Почта</p><a href={`mailto:${SITE.email}`} className="font-bold">{SITE.email}</a></div>
           <div className="flex gap-3">
-            <a href={SITE.max} target="_blank" rel="noopener" className="btn bg-[#4F46E5] text-white pl-2 pr-4 py-2 text-sm"><Image src="/img/max.png" alt="" width={28} height={28} className="rounded-full" /> Max</a>
+            <a href={SITE.max} target="_blank" rel="noopener" className="btn-ghost pl-2 pr-4 py-2 text-sm"><Image src="/img/max.png" alt="" width={28} height={28} /> Max</a>
             <a href={SITE.telegramUrl} target="_blank" rel="noopener" className="btn bg-[#2AABEE] text-white px-4 py-2.5 text-sm">Telegram</a>
             <a href={SITE.vk} target="_blank" rel="noopener" className="btn bg-[#0077FF] text-white px-4 py-2.5 text-sm"><Vk /> VK</a>
           </div>

@@ -27,7 +27,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <Breadcrumbs items={crumbs} />
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 items-start">
           <div>
-            {brandLogo(b.slug) && <Image src={brandLogo(b.slug)!} alt={`Логотип ${b.name}`} width={120} height={60} className="h-12 w-auto mb-4 grayscale opacity-80" />}<h1>Ремонт {b.name} в Иркутске</h1>
+            {brandLogo(b.slug) && <Image src={brandLogo(b.slug)!} alt={`Логотип ${b.name}`} width={120} height={60} className="h-12 w-auto mb-4 opacity-80" />}<h1>Ремонт {b.name} в Иркутске</h1>
             <p className="mt-5 text-[17px] text-ink/90">{b.intro}</p>
             <p className="mt-4 text-muted"><span className="font-bold text-ink">Модели:</span> {b.models.join(", ")}.</p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3"><Link href="/zapis/" className="btn-primary">Записаться</Link><a href={`tel:${SITE.phoneRaw}`} className="btn-ghost">{SITE.phone}</a></div>
