@@ -19,17 +19,19 @@ export const NAV = [
 export default function Header() {
   return (
     <header className="container pt-3 sm:pt-4">
-      <div className="flex items-center justify-between gap-3 py-2">
+      <div className="flex items-center gap-4 py-2">
         <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="Автосервис Магистраль — на главную">
           <Image src="/img/logo.png" alt="Магистраль автосервис" width={561} height={120} priority className="h-10 w-auto sm:h-14" />
         </Link>
-        <p className="hidden 2xl:block text-sm text-muted max-w-[230px] leading-snug">{SITE.tagline}</p>
-        <Link href="/zapis/" className="hidden md:inline-flex btn-primary btn-sm lg:px-6 lg:py-3 lg:text-base whitespace-nowrap">Записаться на ремонт</Link>
-        <div className="hidden lg:flex items-center gap-3 text-sm"><span className="text-muted">Напишите нам</span><MaxLink /><TgLink /></div>
-        <div className="hidden md:block text-right shrink-0">
-          <div className="text-xs text-muted">{SITE.hours}</div>
-          <a href={`tel:${SITE.phoneRaw}`} className="text-xl font-extrabold tracking-tight leading-tight hover:text-accent whitespace-nowrap">{SITE.phone}</a>
-          <div><Link href="/zapis/" className="text-sm text-accent font-semibold underline underline-offset-2">Заказать звонок</Link></div>
+        <p className="hidden 2xl:block text-sm text-muted max-w-[220px] leading-snug mr-2">{SITE.tagline}</p>
+        <div className="hidden md:flex items-center gap-4 lg:gap-6 ml-auto">
+          <Link href="/zapis/" className="btn-primary btn-sm lg:px-6 lg:py-3 lg:text-base whitespace-nowrap">Записаться на ремонт</Link>
+          <div className="hidden lg:flex items-center gap-3 text-sm shrink-0"><span className="text-muted">Напишите нам</span><MaxLink /><TgLink /></div>
+          <div className="text-right shrink-0">
+            <div className="text-xs text-muted">{SITE.hours}</div>
+            <a href={`tel:${SITE.phoneRaw}`} className="text-xl font-extrabold tracking-tight leading-tight hover:text-accent whitespace-nowrap">{SITE.phone}</a>
+            <div><Link href="/zapis/" className="text-sm text-accent font-semibold underline underline-offset-2">Заказать звонок</Link></div>
+          </div>
         </div>
         {/* mobile: phone + max + burger */}
         <div className="flex md:hidden items-center gap-2">
