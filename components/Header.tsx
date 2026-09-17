@@ -10,6 +10,8 @@ export const NAV = [
   { href: "/marki/", label: "Марки" },
   { href: "/zapchasti/", label: "Запчасти" },
   { href: "/yurlicam/", label: "Юрлицам" },
+  { href: "/akcii/", label: "Акции" },
+  { href: "/vakansii/", label: "Вакансии" },
   { href: "/o-kompanii/", label: "О нас" },
   { href: "/kontakty/", label: "Контакты" },
 ];
@@ -23,7 +25,7 @@ export default function Header() {
         </Link>
         <p className="hidden 2xl:block text-sm text-muted max-w-[230px] leading-snug">{SITE.tagline}</p>
         <Link href="/zapis/" className="hidden md:inline-flex btn-primary btn-sm lg:px-6 lg:py-3 lg:text-base whitespace-nowrap">Записаться на ремонт</Link>
-        <div className="hidden lg:flex items-center gap-3 text-sm"><span className="text-muted hidden xl:inline whitespace-nowrap">Напишите нам</span><MaxLink /><TgLink /><span className="mx-2 h-6 w-px bg-line" /><Link href="/akcii/" className="text-muted hover:text-accent font-semibold whitespace-nowrap">Акции</Link><Link href="/vakansii/" className="text-muted hover:text-accent font-semibold whitespace-nowrap">Вакансии</Link></div>
+        <div className="hidden lg:flex items-center gap-3 text-sm"><span className="text-muted">Напишите нам</span><MaxLink /><TgLink /></div>
         <div className="hidden md:block text-right shrink-0">
           <div className="text-xs text-muted">{SITE.hours}</div>
           <a href={`tel:${SITE.phoneRaw}`} className="text-xl font-extrabold tracking-tight leading-tight hover:text-accent whitespace-nowrap">{SITE.phone}</a>

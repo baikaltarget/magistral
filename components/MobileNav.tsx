@@ -17,7 +17,7 @@ export default function MobileNav({ nav }: { nav: Item[] }) {
         <div className="fixed inset-0 z-40 bg-white overflow-y-auto pt-20 px-6 pb-28">
           <button onClick={() => setOpen(false)} aria-label="Закрыть" className="absolute top-5 right-5 w-11 h-11 rounded-full border border-line text-2xl">×</button>
           <ul className="space-y-1">
-            {[...nav, { href: "/akcii/", label: "Акции" }, { href: "/vakansii/", label: "Вакансии" }].map((n) => (
+            {nav.map((n) => (
               <li key={n.href}>
                 <Link href={n.href} onClick={() => setOpen(false)} className="block py-3 text-xl font-extrabold">{n.label}</Link>
                 {n.children && <ul className="pl-4 pb-2">{n.children.map((c) => (<li key={c.href}><Link href={c.href} onClick={() => setOpen(false)} className="block py-2 text-muted">{c.label}</Link></li>))}</ul>}
