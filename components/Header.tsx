@@ -1,21 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SITE, hubs } from "@/lib/site";
-import { Phone, Chevron, Wrench, Car, Box, Doc, Tag, Users, Pin, Briefcase } from "./Icons";
+import { Phone, Chevron } from "./Icons";
 import { MaxLink, TgLink } from "./Messengers";
 import MobileNav from "./MobileNav";
 
 export const NAV = [
-  { href: "/uslugi/", label: "Услуги", icon: "wrench", children: hubs().filter(h => h.slug !== "prochee").map((h) => ({ href: `/uslugi/${h.slug}/`, label: h.name })).concat([{ href: "/uslugi/razval-shozhdenie/", label: "Развал-схождение" }, { href: "/uslugi/zamena-masla/", label: "Замена масла" }, { href: "/uslugi/diagnostika-avto/", label: "Диагностика" }, { href: "/uslugi/", label: "Все услуги и цены" }]) },
-  { href: "/marki/", label: "Марки", icon: "car" },
-  { href: "/zapchasti/", label: "Запчасти", icon: "box" },
-  { href: "/yurlicam/", label: "Юрлицам", icon: "doc" },
-  { href: "/akcii/", label: "Акции", icon: "tag" },
-  { href: "/o-kompanii/", label: "О нас", icon: "users" },
-  { href: "/vakansii/", label: "Вакансии", icon: "briefcase" },
-  { href: "/kontakty/", label: "Контакты", icon: "pin" },
+  { href: "/uslugi/", label: "Услуги", children: hubs().filter(h => h.slug !== "prochee").map((h) => ({ href: `/uslugi/${h.slug}/`, label: h.name })).concat([{ href: "/uslugi/razval-shozhdenie/", label: "Развал-схождение" }, { href: "/uslugi/zamena-masla/", label: "Замена масла" }, { href: "/uslugi/diagnostika-avto/", label: "Диагностика" }, { href: "/uslugi/", label: "Все услуги и цены" }]) },
+  { href: "/marki/", label: "Марки" },
+  { href: "/zapchasti/", label: "Запчасти" },
+  { href: "/yurlicam/", label: "Юрлицам" },
+  { href: "/o-kompanii/", label: "О нас" },
+  { href: "/kontakty/", label: "Контакты" },
 ];
-const ICONS: Record<string, any> = { wrench: Wrench, car: Car, box: Box, doc: Doc, tag: Tag, users: Users, pin: Pin, briefcase: Briefcase };
 
 export default function Header() {
   return (
@@ -24,12 +21,12 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="Автосервис Магистраль — на главную">
           <Image src="/img/logo.png" alt="Магистраль автосервис" width={561} height={120} priority className="h-10 w-auto sm:h-14" />
         </Link>
-        <p className="hidden xl:block text-sm text-muted max-w-[230px] leading-snug">{SITE.tagline}</p>
-        <Link href="/zapis/" className="hidden md:inline-flex btn-primary btn-sm lg:px-6 lg:py-3 lg:text-base">Записаться на ремонт</Link>
-        <div className="hidden lg:flex items-center gap-3 text-sm"><span className="text-muted">Напишите нам</span><MaxLink /><TgLink /></div>
-        <div className="hidden md:block text-right">
+        <p className="hidden 2xl:block text-sm text-muted max-w-[230px] leading-snug">{SITE.tagline}</p>
+        <Link href="/zapis/" className="hidden md:inline-flex btn-primary btn-sm lg:px-6 lg:py-3 lg:text-base whitespace-nowrap">Записаться на ремонт</Link>
+        <div className="hidden lg:flex items-center gap-3 text-sm"><span className="text-muted hidden xl:inline whitespace-nowrap">Напишите нам</span><MaxLink /><TgLink /><span className="mx-2 h-6 w-px bg-line" /><Link href="/akcii/" className="text-muted hover:text-accent font-semibold whitespace-nowrap">Акции</Link><Link href="/vakansii/" className="text-muted hover:text-accent font-semibold whitespace-nowrap">Вакансии</Link></div>
+        <div className="hidden md:block text-right shrink-0">
           <div className="text-xs text-muted">{SITE.hours}</div>
-          <a href={`tel:${SITE.phoneRaw}`} className="text-xl font-extrabold tracking-tight leading-tight hover:text-accent">{SITE.phone}</a>
+          <a href={`tel:${SITE.phoneRaw}`} className="text-xl font-extrabold tracking-tight leading-tight hover:text-accent whitespace-nowrap">{SITE.phone}</a>
           <div><Link href="/zapis/" className="text-sm text-accent font-semibold underline underline-offset-2">Заказать звонок</Link></div>
         </div>
         {/* mobile: phone + max + burger */}
@@ -41,10 +38,10 @@ export default function Header() {
       </div>
       <nav className="hidden md:block mt-2 rounded-pill bg-[#E9EBEF] px-2" aria-label="Основное меню">
         <ul className="flex items-center justify-between">
-          {NAV.map((n) => { const I = ICONS[n.icon]; return (
+          {NAV.map((n) => (
             <li key={n.href} className="relative group">
-              <Link href={n.href} className="flex items-center gap-2 px-2.5 lg:px-4 py-3.5 text-[15px] font-bold text-ink hover:text-accent">
-                <I width={18} height={18} className="text-accent" />{n.label}{n.children && <Chevron width={16} height={16} className="text-muted" />}
+              <Link href={n.href} className="flex items-center gap-2 px-4 lg:px-6 py-3.5 text-[15px] font-bold text-ink hover:text-accent">
+                {n.label}{n.children && <Chevron width={16} height={16} className="text-muted" />}
               </Link>
               {n.children && (
                 <div className="absolute left-0 top-full z-30 hidden group-hover:block group-focus-within:block pt-1">
@@ -53,7 +50,7 @@ export default function Header() {
                   </ul>
                 </div>
               )}
-            </li>); })}
+            </li>))}
         </ul>
       </nav>
     </header>
